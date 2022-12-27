@@ -20,9 +20,14 @@ public class LibroController {
     @Autowired
     private LibroService libroService;
 
-    //LISTAR TODO
 
     @GetMapping("")
+    public String all(){
+        return "views/libros_LSB";
+    }
+    //LISTAR TODO
+
+    @GetMapping("libos")
     public String findAll(Model model) {
         try {
             List<Libro> libros = this.libroService.findAll();
