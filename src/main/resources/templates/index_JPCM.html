@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -24,7 +24,7 @@
                 <li></li>
                 <li class="nav-item"><a class="nav-link" href="profile.html"><i
                         class="fas fa-user"></i><span>Perfil</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="views/libros.html"><i class="fas fa-book"></i><span>Libros</span></a>
+                <li class="nav-item"><a class="nav-link" th:href="@{/libros}"><i class="fas fa-book"></i><span>Libros</span></a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="views/login_JPCM.html"><i class="far fa-edit"></i><span>Prestamos</span></a>
                 </li>
@@ -319,10 +319,7 @@
                 <div class="row"></div>
             </div>
         </div>
-        <footer class="bg-white sticky-footer">
-            <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © BIBLIOTECA 2022</span></div>
-            </div>
+        <footer th:replace ="components/footer::c_footer">
         </footer>
     </div>
     <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
