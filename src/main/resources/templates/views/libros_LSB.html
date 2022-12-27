@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -117,18 +117,18 @@
                 </div>
                 <div class="card-body p-4 p-md-5">
 
-                    <form>
+                    <form th:action="@{/libros2}" th:object="${libro}" method="post">
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">Título</label>
-                                    <input type="text" class="form-control" required="true" id="titulo" />
+                                    <input th:field="*{titulo}" type="text" class="form-control" required="true" id="titulo" />
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">Ruta de portada</label>
-                                    <input type="text" class="form-control" required="true" id="ruta_portada" />
+                                    <input th:field="*{rutaPortad}" type="text" class="form-control" required="true" id="ruta_portada" />
                                 </div>
                             </div>
                         </div>
@@ -137,13 +137,13 @@
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">Ubicación</label>
-                                    <input type="text" class="form-control" required="true" id="ubicacion" />
+                                    <input th:field="*{ubicacion}"type="text" class="form-control" required="true" id="ubicacion" />
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">Ejemplares</label>
-                                    <input type="text" class="form-control" required="true" id="ejemplares" />
+                                    <input th:field="*{ejemplares}"type="text" class="form-control" required="true" id="ejemplares" />
                                 </div>
                             </div>
                         </div>
@@ -152,13 +152,13 @@
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">ISBN</label>
-                                    <input type="text" class="form-control" required="true" id="isbn" />
+                                    <input th:field="*{isbn}" type="text" class="form-control" required="true" id="isbn" />
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">DOI</label>
-                                    <input type="text" class="form-control" required="true" id="doi" />
+                                    <input th:field="*{doi}" type="text" class="form-control" required="true" id="doi" />
                                 </div>
                             </div>
                         </div>
@@ -167,16 +167,30 @@
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">Editorial</label>
+
+                                    <!-- Creamos el elemento select -->
                                     <select class="form-select" id="editorial" aria-label="Default select example">
-                                        <option selected>Seleccione une editorial</option>
+                                        <!-- Recorremos la lista de filas de la tabla y agregamos cada una como un elemento option -->
+                                        <option th:each="editorial1 : ${editoriales2}"
+                                                th:value="${editorial1}"
+                                                th:data-columna1="${editorial1.nombre}"
+                                                th:data-columna2="${editorial1.fechaRegistro}"
+                                                th:text="${editorial1.nombre}"
+                                                th:field="*{editorial}">Fila</option>
                                     </select>
+
+
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">Categoría</label>
                                     <select class="form-select" id="categoria" aria-label="Default select example">
-                                        <option selected>Seleccione una categoría</option>
+                                        <option th:each="categoria : ${categoria2}"
+                                                th:value="${categoria.idCategoria}"
+                                                th:data-columna1="${categoria.nombre}"
+                                                th:data-columna2="${categoria.fechaRegistro}"
+                                                th:text="${categoria.nombre}">Fila</option>
                                     </select>
                                 </div>
                             </div>
@@ -187,19 +201,23 @@
                                 <div class="form-outline">
                                     <label class="form-label">Autor</label>
                                     <select class="form-select" id="autor" aria-label="Default select example">
-                                        <option selected>Seleccione un autor</option>
+                                        <option th:each="autor : ${autor2}"
+                                                th:value="${autor.idAutor}"
+                                                th:data-columna1="${autor.nombres}"
+                                                th:data-columna2="${autor.fechaRegistro}"
+                                                th:text="${autor.nombres}">Fila</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-
+                        <div class="card-footer">
+                            <button class="btn btn-success" id="registrar">Registrar</button>
+                        </div>
 
                     </form>
                 </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-success" id="registrar">Registrar</button>
-                </div>
+
             </div>
         </div>
     </main>
