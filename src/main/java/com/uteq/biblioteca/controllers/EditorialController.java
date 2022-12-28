@@ -13,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @CrossOrigin("*")
 public class EditorialController {
@@ -32,13 +30,13 @@ public class EditorialController {
 
     @GetMapping("")
     public String all(){
-        return "views/editoriales_JAO";
+        return "nuevo_editorial_JAO";
     }
 
     @GetMapping({"/editoriales"})
     public String listarEditoriales(Model model) throws Exception {
         model.addAttribute("editoriales", editorialService.findAll());
-        return "/views/editorialesLista_JAO";
+        return "views/lista_editorial_JAO";
     }
 
     @GetMapping({"/libros2"})
@@ -123,7 +121,7 @@ public class EditorialController {
     public String registrarEditorial(Model model){
         Editorial editorial = new Editorial();
         model.addAttribute("editorial",editorial);
-        return "views/editoriales_JAO";
+        return "views/nuevo_editorial_JAO";
     }
 
     @PostMapping("/editoriales")

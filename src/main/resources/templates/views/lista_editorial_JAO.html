@@ -9,20 +9,20 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Inicio</a>
+        <a class="navbar-brand" th:href="@{/index}">Inicio</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/editoriales/nuevo}">Registrar Editorial</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/editoriales}">Editoriales</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Componentes</a>
+                    <a class="nav-link" th:href="@{/autores}">Autores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Acerca de</a>
+                    <a class="nav-link" th:href="@{/categorias}">Categorias</a>
                 </li>
             </ul>
             <span class="navbar-text">
@@ -34,9 +34,13 @@
 
 
 <div class="container">
-   <div class="text-center">
+   <div class="text-center" style="margin-top: 50px">
       <h1 text-align="center">Listado de Editoriales</h1>
    </div>
+    <div >
+        <a class="btn btn-success" id="nuevo"  th:href="@{/editoriales/nuevo}">Nuevo</a>
+    </div>
+    <br>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
         <tr>
@@ -50,7 +54,10 @@
             <td th:text="${editorial.nombre}">Nombre</td>
             <td th:text="${editorial.fechaRegistro}">Fecha Registro</td>
 
-            <td>Acciones</td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+            </td>
         </tr>
 
         </tbody>

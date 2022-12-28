@@ -2,17 +2,18 @@ package com.uteq.biblioteca.controllers;
 
 
 import com.uteq.biblioteca.entities.Categoria;
+import com.uteq.biblioteca.entities.Editorial;
 import com.uteq.biblioteca.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("api/categorias")
+@Controller
 @CrossOrigin("*")
 public class CategoriaController {
 	
@@ -26,8 +27,14 @@ public class CategoriaController {
         return "/views/libros_LSB";
     }*/
 
+    @GetMapping({"/categorias"})
+    public String listarCategorias(Model model) throws Exception {
+        model.addAttribute("categorias", categoriaService.findAll());
+        return "views/lista_categoria_JAO";
+    }
+
     //LISTAR TODO
-    @GetMapping
+/*    @GetMapping
     public ResponseEntity<List<Categoria>> getAll()
     {
         try
@@ -94,6 +101,23 @@ public class CategoriaController {
         {
             return ResponseEntity.badRequest().build();
         }
+    }*/
+
+    @GetMapping("categorias/nuevo")
+    public String registrarCategoria(Model model){
+        Categoria categoria = new Categoria();
+        model.addAttribute("categoria",categoria);
+        return "views/nuevo_categoria_JAO";
+    }
+
+    @PostMapping("/categorias")
+    public String guardarCategoria(@ModelAttribute("categoria") Categoria categoria){
+        try {
+            categoriaService.save(categoria);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return "redirect:/index";
     }
 
 }
