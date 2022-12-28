@@ -167,14 +167,14 @@
                                     <label class="form-label">Editorial</label>
 
                                     <!-- Creamos el elemento select -->
-                                    <select class="form-select" id="editorial" aria-label="Default select example">
+                                    <select th:field="*{editorial}" class="form-select" id="editorial" aria-label="Default select example">
                                         <!-- Recorremos la lista de filas de la tabla y agregamos cada una como un elemento option -->
                                         <option th:each="editorial1 : ${editoriales2}"
-                                                th:value="${editorial1}"
+                                                th:value="${editorial1.idEditorial}"
                                                 th:data-columna1="${editorial1.nombre}"
                                                 th:data-columna2="${editorial1.fechaRegistro}"
                                                 th:text="${editorial1.nombre}"
-                                                th:field="*{editorial}">Fila</option>
+                                                >Fila</option>
                                     </select>
 
 
@@ -183,7 +183,7 @@
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">Categoría</label>
-                                    <select class="form-select" id="categoria" aria-label="Default select example">
+                                    <select th:field="*{categorias}" class="form-select" id="categoria" aria-label="Default select example">
                                         <option th:each="categoria : ${categoria2}"
                                                 th:value="${categoria.idCategoria}"
                                                 th:data-columna1="${categoria.nombre}"
@@ -198,7 +198,7 @@
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
                                     <label class="form-label">Autor</label>
-                                    <select class="form-select" id="autor" aria-label="Default select example">
+                                    <select th:field="*{autores}" class="form-select" id="autor" aria-label="Default select example">
                                         <option th:each="autor : ${autor2}"
                                                 th:value="${autor.idAutor}"
                                                 th:data-columna1="${autor.nombres}"

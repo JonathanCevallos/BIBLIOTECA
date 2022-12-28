@@ -45,6 +45,8 @@ public class EditorialController {
         model.addAttribute("categoria2", categoriaService.findAll());
         model.addAttribute("autor2", autorService.findAll());
 
+        Editorial editorial = new Editorial();
+        model.addAttribute("editorialTabla", editorial);
         Libro libro = new Libro();
         model.addAttribute("libro",libro);
 
