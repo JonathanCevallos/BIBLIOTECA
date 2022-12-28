@@ -50,7 +50,7 @@ public class EditorialController {
         Libro libro = new Libro();
         model.addAttribute("libro",libro);
 
-        return "/views/libros_LSB";
+        return "nuevo_libro_LSB";
     }
 
     @PostMapping("/libros2")
