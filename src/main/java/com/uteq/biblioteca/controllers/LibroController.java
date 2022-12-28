@@ -59,7 +59,7 @@ public class LibroController {
         model.addAttribute("autores", autorService.findAll());
         Libro libro = new Libro();
         model.addAttribute("libro",libro);
-        return "nuevo_libro_LSB";
+        return "views/nuevo_libro_LSB";
     }
 
     @GetMapping(value = "/all")

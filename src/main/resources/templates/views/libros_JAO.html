@@ -109,17 +109,17 @@
 
 <div class="container">
     <div class="text-center">
-        <h1 text-align="center">Listado de Autores</h1>
+        <h1 text-align="center">Listado de Libros</h1>
     </div>
     <div >
-        <a class="btn btn-success" id="nuevo"  th:href="@{/autores/nuevo}">Nuevo</a>
+        <a class="btn btn-success" id="nuevo"  th:href="@{/libros/new}">Nuevo</a>
     </div>
     <br>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
         <tr>
             <th>Titulo</th>
-            <th>Ruta de portado</th>
+            <th>Ruta de portada</th>
             <th>Ubicacion</th>
             <th>Ejemplares</th>
             <th>ISBN</th>
@@ -134,11 +134,18 @@
         <tbody>
         <tr th:each="libro : ${libros}">
             <td th:text="${libro.titulo}">Nombre</td>
-            <td th:text="${libro.rutaPortad}">Fecha Registro</td>
-            <td th:text="${libro.ubicacion}">Fecha Registro</td>
+            <td th:text="${libro.rutaPortad}">Ruta portada</td>
+            <td th:text="${libro.ubicacion}">Ubicacion</td>
             <td th:text="${libro.ejemplares}">Ejemplares</td>
             <td th:text="${libro.isbn}"> ISBN</td>
-            <td th:text="${libro.ubicacion}">Fecha Registro</td>
+            <td th:text="${libro.doi}">Doi</td>
+            <td th:text="${libro.editorial.nombre}">Editorial</td>
+            <td th:text="${libro.categorias.get(0).nombre}">
+
+
+            </td>
+            <td th:text="${libro.autores.get(0).nombres}">Autor</td>
+            <td th:text="${libro.fechaRegistro}">Fecha Registro</td>
             <td>
                 <button type="button" class="btn btn-primary btn-sm">Editar</button>
                 <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
@@ -147,6 +154,56 @@
 
         </tbody>
     </table>
+
+<!--    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Titulo</th>
+            <th>Ruta de portada</th>
+            <th>Ubicacion</th>
+            <th>Ejemplares</th>
+            <th>ISBN</th>
+            <th>DOI</th>
+            <th>Editorial</th>
+            <th>Categoría</th>
+            <th>Autor</th>
+            <th>Fecha Registro</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="libro : ${libros}">
+            <tr>
+                <td th:text="${libro.titulo}">Nombre</td>
+            </tr>
+            <tr>
+                <td th:text="${libro.rutaPortad}">Ruta portada</td>
+            </tr>
+            <tr>
+                <td th:text="${libro.ejemplares}">Ejemplares</td>
+            </tr>
+            <tr>
+                <td th:text="${libro.isbn}"> ISBN</td>
+            </tr>
+            <tr>
+                <td th:text="${libro.doi}">Doi</td>
+            </tr>
+            <tr>
+
+                <td th:text="${libro.categorias.get(0).getNombre()}">
+            </tr>
+            <tr>
+                <td th:text="${libro.editorial.nombre}">Editorial</td>
+            </tr>
+
+
+        </th:block>
+
+        </tbody>
+    </table>-->
+
+
+
 
 </div>
 <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
