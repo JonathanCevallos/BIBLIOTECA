@@ -119,7 +119,7 @@ public class EditorialController {
         }
     }*/
 
-    @GetMapping("editoriales/nuevo")
+    @GetMapping("editoriales/new")
     public String registrarEditorial(Model model){
         Editorial editorial = new Editorial();
         model.addAttribute("editorial",editorial);
@@ -133,7 +133,7 @@ public class EditorialController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return "redirect:/index";
+        return "redirect:/libros/new";
     }
 
 

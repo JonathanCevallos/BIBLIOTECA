@@ -103,7 +103,7 @@ public class CategoriaController {
         }
     }*/
 
-    @GetMapping("categorias/nuevo")
+    @GetMapping("categorias/new")
     public String registrarCategoria(Model model){
         Categoria categoria = new Categoria();
         model.addAttribute("categoria",categoria);
@@ -117,7 +117,7 @@ public class CategoriaController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return "redirect:/index";
+        return "redirect:/libros/new";
     }
 
 }

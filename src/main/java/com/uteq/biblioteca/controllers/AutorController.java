@@ -97,7 +97,7 @@ public class AutorController {
     }*/
 
 
-    @GetMapping("autores/nuevo")
+    @GetMapping("autores/new")
     public String registrarAutor(Model model){
         Autor autor = new Autor();
         model.addAttribute("autor",autor);
@@ -111,7 +111,7 @@ public class AutorController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return "redirect:/index";
+        return "redirect:/libros/new";
     }
 
 }
