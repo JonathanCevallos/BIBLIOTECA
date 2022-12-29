@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="row">
                     <a class="btn btn-primary btn-sm d-none d-sm-inline-block mb-1"
-                       role="button" href="#"><i
+                       role="button" th:href="@{libros/new}"><i
                             class="fas fa-plus-circle fa-sm text-white-50"></i>&nbsp;Nuevo
                     </a>
                 </div>
@@ -36,31 +36,59 @@
                     <table class="table table-striped">
                         <thead class="table-dark">
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th>Titulo</th>
+                            <th>Ruta de portada</th>
+                            <th>Ubicacion</th>
+                            <th>Ejemplares</th>
+                            <th>ISBN</th>
+                            <th>DOI</th>
+                            <th>Editorial</th>
+                            <th>Categoría</th>
+                            <th>Autor</th>
+                            <th>Fecha Registro</th>
+                            <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                        <tr th:each="libro : ${libros}">
+                            <td th:text="${libro.titulo}">Nombre</td>
+                            <td th:text="${libro.rutaPortad}">Ruta portada</td>
+                            <td th:text="${libro.ubicacion}">Ubicacion</td>
+                            <td th:text="${libro.ejemplares}">Ejemplares</td>
+                            <td th:text="${libro.isbn}"> ISBN</td>
+                            <td th:text="${libro.doi}">Doi</td>
+                            <td th:text="${libro.editorial.nombre}">Editorial</td>
+                            <td >
+
+                                <table>
+                                    <tr>
+
+                                    </tr>
+                                    <tr th:each="categoria : ${libro.categorias}">
+                                        <td th:text="${categoria.nombre}">First Name</td>
+
+                                    </tr>
+                                </table>
+
+                            </td>
+                            <td >
+                                <table>
+                                    <tr>
+
+                                    </tr>
+                                    <tr th:each="autor : ${libro.autores}">
+                                        <td th:text="${autor.nombres}">First Name</td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                            <td th:text="${libro.fechaRegistro}">Fecha Registro</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm">Editar</button>
+                                <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                            </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
